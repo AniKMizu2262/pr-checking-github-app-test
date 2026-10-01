@@ -158,8 +158,8 @@ export async function githubCallback(req, res) {
         console.error(error.response?.data || error.message);
 
         return res.status(500).json({
-            success: false,
-            message: "GitHub login failed"
-        });
+    success: true,
+    message: "GitHub login failed"
+});
     }
 };
