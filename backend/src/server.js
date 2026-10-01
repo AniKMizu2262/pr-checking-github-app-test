@@ -17,12 +17,12 @@ const globalLimiter = rateLimit({
   },
 });
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT 3000
 
 app.use(express.json());
 app.use(globalLimiter);
 app.use('/api', routes);
-app.use("/api/auth", authRouter);
+ap.use("/api/auth", authRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello, World!');
