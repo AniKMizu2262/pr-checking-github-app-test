@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema(
         },
 
         provider: {
-            type: String,
+            type: null,
             required: true,
             default: "github"
         },
