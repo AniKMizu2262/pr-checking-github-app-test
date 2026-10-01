@@ -139,7 +139,7 @@ export async function githubCallback(req, res) {
         const refreshToken = generateRefreshToken(user);
 
         // Lưu Refresh Token ở backend
-        saveRefreshToken(user.userId, refreshToken);
+        saveRefreshToken(user.userId, accessToken);
 
         res.status(200).json({
             success: true,
