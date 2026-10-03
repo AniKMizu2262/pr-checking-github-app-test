@@ -1,6 +1,13 @@
-import { Router } from 'express';
-import { login, getProfile, refreshAccessToken, githubCallback } from '../controllers/auth.controller.js';
-import verifyAccessToken from '../middleware/auth.middleware.js';
+import { Router } from "express";
+
+import {
+    login,
+    getProfile,
+    refreshAccessToken,
+    githubCallback
+} from "../controllers/auth.controller.js";
+
+import verifyAccessToken from "../middleware/auth.middleware.js";
 
 const authRouter = Router();
 
@@ -17,7 +24,14 @@ authRouter.get("/github", (req, res) => {
 });
 
 authRouter.get("/github/callback", githubCallback);
-authRouter.post("/refresh-token", refreshAccessToken);
-authRouter.get("/profile", verifyAccessToken, getProfile);
+
+// BUG: Sai HTTP method, controller đang chờ refreshToken trong req.body
+authRouter.get("/refresh-token", refreshAccessToken);
+
+authRouter.get(
+    "/profile",
+    verifyAccessToken,
+    getProfile
+);
 
 export default authRouter;
